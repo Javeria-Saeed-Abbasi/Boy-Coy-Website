@@ -38,15 +38,19 @@ let clouds4 = document.querySelector(".clouds4");
 let mainLeftPage2 = document.querySelector(".page2 .mainLeft");
 let mainRightPage2 = document.querySelector(".page2 .mainRight");
 let page3 = document.querySelector(".page3");
+let backgroundpage3 = document.querySelector(".page3 .background");
+
 let mountains1 = document.querySelector(".page3 .mountains1");
 let mountains2 = document.querySelector(".page3 .mountains2");
 let mainRight3 = document.querySelector(".page3 .mainRight");
 let mainLeft3 = document.querySelector(".page3 .mainLeft");
 let page4 = document.querySelector(".page4");
 let background3Page4 = document.querySelector(".page4 .background3");
+let background2Page4 = document.querySelector(".page4 .background2");
+let background1Page4 = document.querySelector(".page4 .background1");
 let wave3 = document.getElementById("#wave3");
 let wave2 = document.getElementById("#wave2");
-let wave1 = document.getElementById("#wave1");
+let wave1 = document.getElementById("wave1");
 let wavePage4 = document.querySelector(".wave");
 // let leftBaloon = document.querySelector(".baloonLeft");
 window.addEventListener("scroll", function () {
@@ -69,25 +73,21 @@ window.addEventListener("scroll", function () {
   mainRightPage2.style.top = 750 + "px";
   // PAGE 3
   page3.style.top = 1530 + "px";
-  mountains1.style.transform = "translateY(" + value * 0.055 + "px) ";
-  mountains1.style.top = 26 + "px";
-  mountains2.style.transform = "translateY(" + value * 0.08 + "px) ";
+  backgroundpage3.style.transform="translateY(" + value * 0.1 + "px) ";
+  mountains1.style.transform = "translateY(" + value * 0.058 + "px) ";
+  // mountains1.style.top = 26 + "px";
+  mountains2.style.transform = "translateY(" + value * 0.09 + "px) ";
   console.log(value, mountains2.style.transform + "mo8un");
-  mainRight3.style.transform = "translateY(" + value * 0.25 + "px) ";
-  mainLeft3.style.transform = "translateY(" + value * 0.25 + "px)";
+  mainRight3.style.transform = "translateY(" + value * 0.28 + "px) ";
+  mainLeft3.style.transform = "translateY(" + value * 0.28 + "px)";
   //PAGE4
   page4.style.top = 2692 + "px";
-  background3Page4.style.transform = "translateY(" + value * 0 + "px)";
+  background1Page4.style.transform = "translateY(" + value * 0.008 + "px)";
+  background2Page4.style.transform = "translateY(" + value * 0.005 + "px)";
+  background3Page4.style.transform = "translateY(" + value * -0.009 + "px)";
 
-  wave3.style.transform = "translateX(" + value * -0.2 + "px)";
-  wave2.style.transform = "translateX(" + value * -0.25 + "px)";
-  wave1.style.transform = "translateX(" + value * -0.27 + "px)";
 
-  wave3.style.transform = "translateY(" + value * -0.2 + "px)";
-  wave2.style.transform = "translateY(" + value * -0.01 + "px)";
-  wave1.style.transform = "translateY(" + value * -0.05 + "px)";
-
-  wavePage4.style.transform = "translateY(" + value * 0.3 + "px)";
+  // wavePage4.style.transform = "translateY(" + value * 0.3 + "px)";
 });
 $(window).scroll(function () {
   $("#wave1").addClass("wave1Animate");

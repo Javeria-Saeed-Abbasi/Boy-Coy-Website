@@ -510,7 +510,11 @@ html{
     left: 382px;
     top: 43px;
     z-index: 2;
-    animation: animateRobo 2s linear;
+    animation: animateRobo 2s linear 0s;
+    -webkit-animation: animateRobo 2s linear 0s;
+    -moz-animation: animateRobo 2s linear 0s;
+  -o-animation: animateRobo 2s linear 0s;
+  -ms-animation: animateRobo 2s linear 0s;
   }
   @keyframes animateRobo{
     0%{
@@ -531,7 +535,11 @@ html{
     -o-transform-origin: 101px 95px;
     -ms-transform-origin: 101px 95px;
     animation: rotationLeft 2s infinite linear;
-    transform: rotate(1.72796deg)
+    transform: rotate(1.72796deg);
+    -webkit-animation: rotationLeft 2s infinite linear;
+    -moz-animation: rotationLeft 2s infinite linear;
+  -o-animation: rotationLeft 2s infinite linear;
+  -ms-animation: rotationLeft 2s infinite linear;
   }
   @keyframes rotationLeft {
     0% {
@@ -546,13 +554,16 @@ html{
     top: 295px;
     left: 210px;
     z-index: -1;
-
     transform-origin: 0px 13px;
     -webkit-transform-origin: 0px 13px;
     -moz-transform-origin: 0px 13px;
     -o-transform-origin: 0px 13px;
     -ms-transform-origin: 0px 13px;
     animation: rotationRight 2s infinite linear;
+    -webkit-animation:  rotationRight 2s infinite linear;
+    -moz-animation:  rotationRight 2s infinite linear;
+  -o-animation:  rotationRight 2s infinite linear;
+  -ms-animation:  rotationRight 2s infinite linear;
   }
   @keyframes rotationRight {
     0% {
