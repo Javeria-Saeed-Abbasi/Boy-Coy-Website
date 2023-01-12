@@ -1,19 +1,94 @@
 // butter.init({
 //     wrapperId: 'butter'
 //   });
+
 new WOW().init();
 
-var id1, id2, id3, id4;
+function init(){
+	new SmoothScroll(document,120,12)
+}
+
+function SmoothScroll(target, speed, smooth) {
+	if (target === document)
+		target = (document.scrollingElement 
+              || document.documentElement 
+              || document.body.parentNode 
+              || document.body) // cross browser support for document scrolling
+      
+	var moving = false
+	var pos = target.scrollTop
+  var frame = target === document.body 
+              && document.documentElement 
+              ? document.documentElement 
+              : target // safari is the new IE
+  
+	target.addEventListener('mousewheel', scrolled, { passive: true })
+	target.addEventListener('DOMMouseScroll', scrolled, { passive: true })
+
+	function scrolled(e) {
+		e.preventDefault(); // disable default scrolling
+
+		var delta = normalizeWheelDelta(e)
+
+		pos += -delta * speed
+		pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
+
+		if (!moving) update()
+	}
+
+	function normalizeWheelDelta(e){
+		if(e.detail){
+			if(e.wheelDelta)
+				return e.wheelDelta/e.detail/40 * (e.detail>0 ? 1 : -1) // Opera
+			else
+				return -e.detail/3 // Firefox
+		}else
+			return e.wheelDelta/120 // IE,Safari,Chrome
+	}
+
+	function update() {
+		moving = true
+    
+		var delta = (pos - target.scrollTop) / smooth
+    
+		target.scrollTop += delta
+    
+		if (Math.abs(delta) > 0.5)
+			requestFrame(update)
+		else
+			moving = false
+	}
+
+	var requestFrame = function() { // requestAnimationFrame cross browser
+		return (
+			window.requestAnimationFrame ||
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+			window.oRequestAnimationFrame ||
+			window.msRequestAnimationFrame ||
+			function(func) {
+				window.setTimeout(func, 1000 / 50);
+			}
+		);
+	}()
+}
+
+window.onscroll = function() {
+  scrollFunction();
+};
+function scrollFunction() {
+  
+}
 
 // Scroll to specific values
 // scrollTo is the same
-window.scroll({
+window.scrollTo({
   top: 2500,
   left: 0,
   behavior: "smooth",
 });
 
-// Scroll certain amounts from current position
+// // Scroll certain amounts from current position
 window.scrollBy({
   top: 100, // could be negative value
   left: 0,
@@ -39,7 +114,6 @@ let mainLeftPage2 = document.querySelector(".page2 .mainLeft");
 let mainRightPage2 = document.querySelector(".page2 .mainRight");
 let page3 = document.querySelector(".page3");
 let backgroundpage3 = document.querySelector(".page3 .background");
-
 let mountains1 = document.querySelector(".page3 .mountains1");
 let mountains2 = document.querySelector(".page3 .mountains2");
 let mainRight3 = document.querySelector(".page3 .mainRight");
@@ -48,8 +122,8 @@ let page4 = document.querySelector(".page4");
 let background3Page4 = document.querySelector(".page4 .background3");
 let background2Page4 = document.querySelector(".page4 .background2");
 let background1Page4 = document.querySelector(".page4 .background1");
-let wave3 = document.getElementById("#wave3");
-let wave2 = document.getElementById("#wave2");
+let wave3 = document.getElementById("wave3");
+let wave2 = document.getElementById("wave2");
 let wave1 = document.getElementById("wave1");
 let wavePage4 = document.querySelector(".wave");
 // let leftBaloon = document.querySelector(".baloonLeft");
@@ -82,27 +156,39 @@ window.addEventListener("scroll", function () {
   mainLeft3.style.transform = "translateY(" + value * 0.28 + "px)";
   //PAGE4
   page4.style.top = 2692 + "px";
-  background1Page4.style.transform = "translateY(" + value * 0.008 + "px)";
-  background2Page4.style.transform = "translateY(" + value * 0.005 + "px)";
-  background3Page4.style.transform = "translateY(" + value * -0.009 + "px)";
-
-
-  // wavePage4.style.transform = "translateY(" + value * 0.3 + "px)";
-});
-$(window).scroll(function () {
-  $("#wave1").addClass("wave1Animate");
-  console.log(wave1);
+  background1Page4.style.transform = "translateY(" + value * -0.005 + "px)";
+  background2Page4.style.transform = "translateY(" + value * -0.015 + "px)";
+  background3Page4.style.transform = "translateY(" + value * -0.030 + "px)";
+  // wavePage4.style.transform = "translateY(" + value * 0.3 + "px)";\
+  wave1.style.transform = "translateX(-" + value * 0.05 + "px)";
+  wave2.style.transform = "translateX(" + value * 0.003 + "px)";
+  wave3.style.transform = "translateX(" + value * 0.005 + "px)";
 });
 
-// $(function () {
-//   var element = $("#div1");
-//   $(window).scroll(function () {
-//     if($(window).scrollTop() > 100) {
-//       element.addClass("robbo");
-//     }
-
-//   });
+// window.addEventListener("scroll", function () {
+//   let value = window.scrollY;
+//   $("#wave1").addClass("wave1Animate");
+//   console.log(wave1);
 // });
+
+
+// var leftItem = document.getElementById('wave1'),
+//     rightItem = document.getElementById('wave2');
+
+// window.addEventListener("optimizedScroll", function(){
+//   leftItem.style.transform = "translateX(-" + window.pageYOffset + "deg)";
+//   rightItem.style.transform = "translateX(" + window.pageYOffset + "deg)";
+// })
+
+
+// var scrollPos = window.pageYOffset;
+// console.log(scrollPos);
+// document.querySelector("body").scrollHeight
+// document.scrollingElement.offsetHeight
+// var offset = window.pageYOffset/(document.querySelector("body").scrollHeight - document.scrollingElement.offsetHeight);
+// console.log(offset);
+
+
 
 // var prevScrollpos = window.pageYOffset
 // $(window).scroll(function() {
@@ -110,10 +196,10 @@ $(window).scroll(function () {
 //   console.log(window.pageYOffset);
 // });
 
-($body = $(document.body)),
-  ($window = $(window)),
-  (bodyHeight = $body.height());
-console.log(bodyHeight + " bodyheight");
+// ($body = $(document.body)),
+//   ($window = $(window)),
+//   (bodyHeight = $body.height());
+// console.log(bodyHeight + " bodyheight");
 // $(function(){
 //   $('.layer ').each(function() {
 //     var off = $(this).offset().top

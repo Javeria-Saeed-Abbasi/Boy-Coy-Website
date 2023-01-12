@@ -1,6 +1,13 @@
 html{
   scroll-behavior: smooth;
 }
+/* .smooth-scroll-wrapper {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+} */
 .layer .menus {
     margin-top: 40px;
     font-size: 18px;
@@ -1893,14 +1900,25 @@ html{
     transition: 0.5s ease-in-out;
     scroll-behavior: smooth;
   }
-/* .wave1Animate{
-  animation: wave1Animation 2s infinite linear;
+.wave1Animate{
+  animation: wave1Animation 10s backwards linear;
 }
 @keyframes wave1Animation{
+  0%{
+    transform: perspective(200px) translateX(-95px)
+  }
+  100%{
+    transform: translateX(-207px)
+  }
+}
+.wave2Animate{
+  animation: wave2Animation 2s backwards linear;
+}
+@keyframes wave2Animation{
   0%{
     transform: translateX(-95px)
   }
   100%{
     transform: translateX(-207px)
   }
-} */
+}
