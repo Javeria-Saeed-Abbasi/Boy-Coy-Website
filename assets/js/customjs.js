@@ -18,13 +18,12 @@ function SmoothScroll(target, speed, smooth) {
 
   var moving = false;
   var pos = target.scrollTop;
-  var frame =
-    target === document.body && document.documentElement
+  var frame = target === document.body && document.documentElement
       ? document.documentElement
       : target; // safari is the new IE
   target.addEventListener("scroll", scrolled, { passive: true });
   target.addEventListener("mousewheel", scrolled, { passive: false });
-  target.addEventListener("DOMMouseScroll", scrolled, { passive: false });
+  target.addEventListener("DOMMouseScroll", scrolled, { passive: false});
 
   function scrolled(e) {
     //   if(!moving) {
@@ -175,6 +174,8 @@ function SmoothScroll(target, speed, smooth) {
 // };
 
 // })(jQuery);
+
+// Scroll from menu links:
 $('.menus a').click(function (e) {
   var linkHref = $(this).attr("href");
   var idElement = linkHref.substr(linkHref.indexOf("#"));
@@ -204,13 +205,12 @@ document.querySelector(".page").scrollIntoView({
 });
 
 // ================= ScrollY =====================
-// let layer = document.getElementById('div1');
 let layer = document.querySelector(".layer");
 let div1 = document.getElementById("div1");
 let robbo = document.querySelector(".robbo");
 let header = document.querySelector(".header");
-let mainLeft = document.querySelector(".mainLeft");
-let mainRight = document.querySelector(".mainRight");
+let mainLeft = document.querySelector(".page1 .mainLeft");
+let mainRight = document.querySelector(".page1 .mainRight");
 let clouds3 = document.querySelector(".clouds3");
 let clouds4 = document.querySelector(".clouds4");
 let mainLeftPage2 = document.querySelector(".page2 .mainLeft");
@@ -236,9 +236,9 @@ window.addEventListener("scroll", function () {
   robbo.style.transform = "translateY(" + value * 0.25 + "px) ";
   robbo.style.top = 43 + "px";
   header.style.transform = "translateY(" + value * 0.25 + "px) ";
-  mainLeft.style.transform = "translateY(" + value * 0.25 + "px) ";
+  mainLeft.style.transform = "translateY(-" + value * 0.25 + "px) ";
   mainLeft.style.top = 111 + "px";
-  mainRight.style.transform = "translateY(" + value * 0.25 + "px) ";
+  mainRight.style.transform = "translateY(-" + value * 0.25 + "px) ";
   mainRight.style.top = 111 + "px";
   // div1.style.transform = "translateY(" + (value)* 0.25  + "px) ";
   clouds3.style.transform = "translateY(" + value * -0.5 + "px) ";
